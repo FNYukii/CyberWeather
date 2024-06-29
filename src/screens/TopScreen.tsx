@@ -6,8 +6,8 @@ function TopScreen() {
 
 			<div className="flex flex-col items-center   gap-2">
 				
-				<p className="text-4xl">2024-07-04 WEDNESDAY</p>
-				<p className="text-4xl">12:45</p>
+				<p className="text-5xl">2024-07-04 WEDNESDAY</p>
+				<p className="text-5xl">12:45</p>
 			</div>
 		</div>
 	)
