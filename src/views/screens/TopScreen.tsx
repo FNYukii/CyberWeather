@@ -22,7 +22,9 @@ function TopScreen() {
 				<ShuffledText text={dayAndDayOfWeek} className="uppercase whitespace-pre" />
 				<ShuffledText text={time} endDelay={16} className="mt-4"/>
 
-				<button className="mt-16 bg-clickable w-[200px] h-[60px]   text-3xl text-white   hover:brightness-125 transition">RELOAD</button>
+				<button className="mt-16 bg-clickable w-[200px] h-[60px]   text-3xl text-white   hover:brightness-125 transition">
+					<ShuffledText text="RELOAD" endDelay={16}/>
+				</button>
 			</div>
 		</div>
 	)
