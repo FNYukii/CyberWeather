@@ -9,11 +9,11 @@ class ShuffleService {
 
 
 	// 以下、第一段階で利用
-	static makeRandomNumbers(length: number): number[] {
+	static makeRandomNumbers(length: number, count: number): number[] {
 
 		let randomNumbers: number[] = []
 
-		for (let i = 0; i < length / 2; i++) {
+		for (let i = 0; i < count; i++) {
 
 			const rand = Math.floor(Math.random() * length)
 			randomNumbers.push(rand)

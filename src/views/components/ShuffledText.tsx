@@ -28,19 +28,19 @@ function ShuffledText(props: Props) {
 			// 第一段階: 空文字列からchippedTextまで少しずつ変化
 			// 例: "" -> "OE" -> "OR0E" "OR0N0E"
 
-			// 0に置き換える文字を指すインデックスたち
+			// 0置き換えしたい文字を指すインデックスたち
 			let chipIndexes: number[] = []
 
 			// フラグ変数
 			let isChipsMark = false
 
-			// ハイフンや空白以外が0に置き換えられそうなら、やりなおし
+			// ハイフンや空白以外が0置き換えされそうなら、やりなおし
 			do {
 
 				isChipsMark = false
 
-				// 0に置き換える文字を指すインデックスをランダムに生成
-				chipIndexes = ShuffleService.makeRandomNumbers(originalText.length)
+				// 0置き換えする文字を指すインデックスをランダムに生成
+				chipIndexes = ShuffleService.makeRandomNumbers(originalText.length, originalText.length / 2)
 
 				// ハイフンや空白以外が0に置き換えられそうなら、フラグ変数を有効にしてやりなおし
 				chipIndexes.forEach(chipIndex => {
@@ -53,7 +53,7 @@ function ShuffledText(props: Props) {
 			} while (isChipsMark)
 
 
-			// ランダムに0で置き換えたchippedTextを生成
+			// ランダムに0置き換えされたchippedTextを生成
 			const chippedText = ShuffleService.makeChippedText(originalText, chipIndexes)
 
 
@@ -84,11 +84,12 @@ function ShuffledText(props: Props) {
 				// 新しい文字列を生成
 				for (let i = 0; i < chippedText.length; i++) {
 
+					// 0置き換え対象でない文字位置なら、本来の文字を追加
 					if (!chipIndexes.includes(i)) {
-
 						newText += chippedText[i]
 					}
 
+					// 0置き換え対象の文字位置なら、1以外のランダムな数値を追加
 					if (chipIndexes.includes(i)) {
 
 						const letters = "023456789"
@@ -108,7 +109,7 @@ function ShuffledText(props: Props) {
 
 			// 第三段階
 			setText(originalText)
-			
+
 
 
 		})()
