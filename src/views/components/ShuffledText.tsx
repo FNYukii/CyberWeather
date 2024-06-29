@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import ShuffleService from "../../utils/ShuffleService"
 
 
 
@@ -14,53 +15,8 @@ function ShuffledText(props: Props) {
 
 
 	const originalText = props.text
+
 	const [text, setText] = useState<string>("")
-
-
-
-	function sleep(time: number = 40) {
-		return new Promise((r) => setTimeout(r, time))
-	}
-
-
-
-	function makeRandomNumbers(length: number): number[] {
-
-		let randomNumbers: number[] = []
-
-		for (let i = 0; i < length / 2; i++) {
-
-			const rand = Math.floor(Math.random() * length)
-			randomNumbers.push(rand)
-		}
-
-		randomNumbers = Array.from(new Set(randomNumbers))
-
-		return randomNumbers
-	}
-
-
-
-	function makeChippedText(text: string, chipIndexes: number[]): string {
-	
-		let chippedText = ""
-
-		for (let i = 0; i < text.length; i++) {
-
-			if (chipIndexes.includes(i)) {
-				chippedText += "0"
-
-			}
-			
-			if (!chipIndexes.includes(i)) {
-				chippedText += text[i]
-
-			}
-
-		}
-
-		return chippedText
-	}
 
 
 
@@ -73,10 +29,10 @@ function ShuffledText(props: Props) {
 			// 例: "" -> "OE" -> "ORGE" "ORANGE"
 
 			// ランダムな数値たちを生成
-			const randomNumbers = makeRandomNumbers(originalText.length)
+			const randomNumbers = ShuffleService.makeRandomNumbers(originalText.length)
 
-			// originalText内の文字をランダムに0で置き換えたchippedTextを生成
-			const chippedText = makeChippedText(originalText, randomNumbers)
+			// ランダムに0で置き換えたchippedTextを生成
+			const chippedText = ShuffleService.makeChippedText(originalText, randomNumbers)
 
 			// 第一段階を実行
 			for (let i = 1; i < chippedText.length / 2; i++) {
@@ -87,7 +43,7 @@ function ShuffledText(props: Props) {
 				shortText = chippedText.slice(0, i) + chippedText.slice(chippedText.length - i)
 
 				setText(shortText)
-				await sleep()
+				await ShuffleService.sleep()
 			}
 
 			// 改めてchippedTextを表示して、第一段階を完了
@@ -106,9 +62,3 @@ function ShuffledText(props: Props) {
 }
 
 export default ShuffledText
-
-
-
-class ShuffleService {
-
-}
