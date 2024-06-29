@@ -47,7 +47,7 @@ function TopScreen() {
 				<ShuffledText text={timeText} renderFlag={renderFlag} endDelay={16} className="mt-4" />
 
 				<button onClick={() => reload()} className="mt-16 bg-clickable w-[200px] h-[60px]   text-3xl text-white   focus:outline-white focus:outline-double   hover:brightness-125 active:brightness-75 transition">
-					<ShuffledText text="RELOAD" endDelay={16} />
+					<ShuffledText text="RELOAD" renderFlag={renderFlag} endDelay={16} />
 				</button>
 			</div>
 		</div>
