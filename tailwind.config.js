@@ -7,7 +7,8 @@ module.exports = {
 	theme: {
 		extend: {
 			backgroundImage: {
-				'cyber': "url('../images/cyber.png')",
+				"cyber": "url('../images/cyber.png')",
+				"button": "url('../images/button.png')",
 			},
 			colors: {
 				"primary": "#A6DDFC"
