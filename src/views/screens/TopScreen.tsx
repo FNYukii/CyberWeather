@@ -1,6 +1,5 @@
 import dayjs from "dayjs"
-import { useEffect, useState } from "react"
-import StringService from "../../utils/StringService"
+import ShuffledText from "../components/ShuffledText"
 
 
 
@@ -8,29 +7,10 @@ function TopScreen() {
 
 
 
-	const [dayText, setDayText] = useState<string>("090909")
+	const day = dayjs().format("YYYY-MM-DD")
+	const dayOfWeek = dayjs().format("dddd")
+	const time = dayjs().format("HH:mm")
 
-
-	function sleep(time: number = 40) {
-		return new Promise((r) => setTimeout(r, time))
-	}
-
-
-
-	useEffect(() => {
-		(async () => {
-
-			for (let i = 0; i < 30; i++) {
-
-				setDayText(StringService.randomNumeric())
-				await sleep()
-			}
-
-			setDayText(dayjs().format("YYYY-MM-DD"))
-
-		})()
-	}, [])
-	
 
 
 	return (
@@ -39,8 +19,13 @@ function TopScreen() {
 
 			<div className="flex flex-col items-center   gap-2">
 
-				<p className="text-5xl">{dayText} WEDNESDAY</p>
-				<p className="text-5xl">12:45</p>
+				<div className="flex gap-8">
+					<ShuffledText text={day} className="text-5xl" />
+					<ShuffledText text={dayOfWeek} className="text-5xl uppercase" />
+				</div>
+
+
+				<ShuffledText text={time} className="text-5xl" />
 
 				<button className="mt-16 bg-clickable w-[200px] h-[60px]   text-3xl text-white   hover:brightness-125 transition">RELOAD</button>
 			</div>
