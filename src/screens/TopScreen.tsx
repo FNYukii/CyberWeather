@@ -2,7 +2,7 @@ function TopScreen() {
 
 	return (
 
-		<div className="w-screen h-screen   flex justify-center items-center">
+		<div className="w-screen h-screen   flex justify-center items-center   text-primary">
 
 			<div className="flex flex-col items-center   gap-2">
 				
