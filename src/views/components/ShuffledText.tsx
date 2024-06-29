@@ -6,6 +6,7 @@ import ShuffleService from "../../utils/ShuffleService"
 interface Props {
 	text: string
 	className?: string
+	endDelay?: number
 }
 
 
@@ -15,6 +16,7 @@ function ShuffledText(props: Props) {
 
 
 	const originalText = props.text
+	const endDelay = props.endDelay ?? 0
 
 	const [text, setText] = useState<string>("")
 
@@ -77,7 +79,7 @@ function ShuffledText(props: Props) {
 			// 第二段階: chippedTextの0の部分をしばらくシャッフル
 			// 例: "OR0N0E" -> "OR3N7E" -> "OR8N2E" -> "OR3N4E"
 
-			for (let i = 0; i < 20; i++) {
+			for (let i = 0; i < 20 + endDelay; i++) {
 
 				let newText = ""
 
