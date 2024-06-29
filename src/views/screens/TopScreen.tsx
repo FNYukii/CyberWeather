@@ -48,21 +48,25 @@ function TopScreen() {
 				<p>Loading...</p>
 			}
 
+			{isLoaded && weatherInfo === null &&
+				<p>Error!</p>
+			}
+
 
 
 			{isLoaded && weatherInfo !== null &&
 
 				<div className="w-[1000px]">
 
-					<div className="text-center text-5xl text-primary">
+					<div className="text-center text-5xl">
 
-						<Shuffle className="uppercase whitespace-pre">{weatherInfo.dateText}</Shuffle>
+						<Shuffle className="whitespace-pre">{weatherInfo.dateText}</Shuffle>
 						<Shuffle className="mt-4" endDelay={16}>{weatherInfo.timeText}</Shuffle>
 					</div>
 
 
 
-					<div className="mt-12   grid grid-cols-3 gap-12 text-primary">
+					<div className="mt-12   grid grid-cols-3 gap-12">
 
 						<WeatherCard area="osaka" weather={weatherInfo.osakaWeather} temp={weatherInfo.osakaTemp} humi={weatherInfo.osakaHumi} />
 						<WeatherCard area="nagoya" weather={weatherInfo.nagoyaWeather} temp={weatherInfo.nagoyaTemp} humi={weatherInfo.nagoyaHumi} />

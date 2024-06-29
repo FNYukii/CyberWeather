@@ -19,10 +19,10 @@ function WeatherCard(props: Props) {
 
 		<div>
 			<div className="w-full bg-primary/20 py-1">
-				<Shuffle endDelay={24} className="uppercase text-4xl text-center">{props.area}</Shuffle>
+				<Shuffle endDelay={24} className="text-4xl text-center">{props.area}</Shuffle>
 			</div>
 
-			<Shuffle endDelay={32} className="mt-4 uppercase text-4xl">{props.weather}</Shuffle>
+			<Shuffle endDelay={32} className="mt-4 text-4xl">{props.weather}</Shuffle>
 
 		</div>
 	)
