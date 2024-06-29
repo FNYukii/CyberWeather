@@ -121,7 +121,7 @@ function ShuffledText(props: Props) {
 
 
 		})()
-	}, [props.text, originalText, endDelay, props.renderFlag])
+	}, [originalText, endDelay, props.renderFlag])
 
 
 
