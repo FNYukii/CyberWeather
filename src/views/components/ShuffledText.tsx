@@ -27,6 +27,10 @@ function ShuffledText(props: Props) {
 
 
 
+			if (originalText === "") return
+
+
+
 			// 第一段階: 空文字列からchippedTextまで少しずつ変化
 			// 例: "" -> "OE" -> "OR0E" "OR0N0E"
 
@@ -45,6 +49,7 @@ function ShuffledText(props: Props) {
 				chipIndexes = ShuffleService.makeRandomNumbers(originalText.length, originalText.length / 2)
 
 				// 記号が0置き換え対象になっていたら、フラグ変数を有効にしてやりなおし
+				// eslint-disable-next-line
 				chipIndexes.forEach(chipIndex => {
 
 					if (["-", ":", " "].includes(originalText[chipIndex])) {
@@ -115,7 +120,7 @@ function ShuffledText(props: Props) {
 
 
 		})()
-	}, [])
+	}, [originalText, endDelay])
 
 
 
