@@ -8,7 +8,7 @@ module.exports = {
 		extend: {
 			backgroundImage: {
 				"cyber": "url('../images/cyber.png')",
-				"button": "url('../images/button.png')",
+				"clickable": "url('../images/button.png')",
 			},
 			colors: {
 				"primary": "#A6DDFC"
