@@ -1,6 +1,7 @@
 import dayjs from "dayjs"
 import ShuffledText from "../components/ShuffledText"
 import { useEffect, useState } from "react"
+import WeatherCard from "../components/WeatherCard"
 
 
 
@@ -38,13 +39,22 @@ function TopScreen() {
 
 	return (
 
-		<div className="w-screen h-screen   flex justify-center items-center   text-primary">
+		<div className="w-screen h-screen   flex justify-center items-center">
 
-			<div>
+			<div className="w-[1000px]">
 
-				<div className="text-center text-5xl">
+				<div className="text-center text-5xl text-primary">
 					<ShuffledText text={dateText} renderFlag={renderFlag} className="uppercase whitespace-pre" />
 					<ShuffledText text={timeText} renderFlag={renderFlag} endDelay={16} className="mt-4" />
+				</div>
+
+
+
+				<div className="mt-12   grid grid-cols-3 gap-12 text-primary">
+
+					<WeatherCard area="osaka"/>
+					<WeatherCard area="nagoya"/>
+					<WeatherCard area="tokyo"/>
 				</div>
 
 
