@@ -5,7 +5,11 @@ module.exports = {
 	"./public/*.html",
   ],
   theme: {
-    extend: {},
+    extend: {
+			backgroundImage: {
+				'cyber': "url('../images/cyber.png')",
+			 }
+		},
   },
   plugins: [],
 }
