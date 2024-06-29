@@ -20,7 +20,7 @@ function TopScreen() {
 
 		const dayAndDayOfWeek = dayjs().format("YYYY-MM-DD    dddd")
 		const time = dayjs().format("HH:mm")
-		
+
 		setDateText(dayAndDayOfWeek)
 		setTimeText(time)
 		setRenderFlag(!renderFlag)
@@ -40,16 +40,23 @@ function TopScreen() {
 
 		<div className="w-screen h-screen   flex justify-center items-center   text-primary">
 
-			<div className="text-center text-5xl">
+			<div>
+
+				<div className="text-center text-5xl">
+					<ShuffledText text={dateText} renderFlag={renderFlag} className="uppercase whitespace-pre" />
+					<ShuffledText text={timeText} renderFlag={renderFlag} endDelay={16} className="mt-4" />
+				</div>
 
 
-				<ShuffledText text={dateText} renderFlag={renderFlag} className="uppercase whitespace-pre" />
-				<ShuffledText text={timeText} renderFlag={renderFlag} endDelay={16} className="mt-4" />
 
-				<button onClick={() => reload()} className="mt-16 bg-clickable w-[200px] h-[60px]   text-3xl text-white   focus:outline-white focus:outline-double   hover:brightness-125 active:brightness-75 transition">
-					<ShuffledText text="RELOAD" renderFlag={renderFlag} endDelay={16} />
+				<button onClick={() => reload()} className="mt-16 block mx-auto   bg-cyber-button w-60 py-2   focus:outline-neutral-500 hover:brightness-150 active:brightness-100 transition">
+					<ShuffledText text="RELOAD" renderFlag={renderFlag} endDelay={16} className="text-white text-3xl"/>
 				</button>
+
+
 			</div>
+
+
 		</div>
 	)
 }
