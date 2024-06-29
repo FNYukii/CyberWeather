@@ -7,6 +7,7 @@ interface Props {
 	text: string
 	className?: string
 	endDelay?: number
+	renderFlag?: boolean
 }
 
 
@@ -120,7 +121,7 @@ function ShuffledText(props: Props) {
 
 
 		})()
-	}, [originalText, endDelay])
+	}, [props.text, originalText, endDelay, props.renderFlag])
 
 
 
