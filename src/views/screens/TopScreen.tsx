@@ -7,7 +7,9 @@ function TopScreen() {
 
 
 
-	const dayAndDayOfWeek = dayjs().format("YYYY-MM-DD----dddd")
+	const dayAndDayOfWeek = dayjs().format("YYYY-MM-DD    dddd")
+	// const day = dayjs().format("YYYY-MM-DD")
+	// const dayOfWeek = dayjs().format("dddd")
 	const time = dayjs().format("HH:mm")
 
 
@@ -19,7 +21,9 @@ function TopScreen() {
 			<div className="flex flex-col items-center   gap-2">
 
 				<div className="flex gap-8">
-					<ShuffledText text={dayAndDayOfWeek} className="text-5xl" />
+					<ShuffledText text={dayAndDayOfWeek} className="text-5xl uppercase whitespace-pre" />
+					{/* <ShuffledText text={day} className="text-5xl" />
+					<ShuffledText text={dayOfWeek} className="text-5xl uppercase" /> */}
 				</div>
 
 

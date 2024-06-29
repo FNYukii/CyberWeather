@@ -1,13 +1,14 @@
 class ShuffleService {
 
 
-
+	// 以下、全ての段階で利用
 	static sleep(time: number = 40) {
 		return new Promise((r) => setTimeout(r, time))
 	}
 
 
 
+	// 以下、第一段階で利用
 	static makeRandomNumbers(length: number): number[] {
 
 		let randomNumbers: number[] = []
