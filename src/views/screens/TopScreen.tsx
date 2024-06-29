@@ -1,37 +1,38 @@
-import dayjs from "dayjs"
 import { useEffect, useState } from "react"
 import WeatherCard from "../components/WeatherCard"
 import Shuffle from "../components/Shuffle"
+import WeatherInfo from "../../entities/WeatherInfo"
+import WeatherService from "../../utils/WeatherService"
 
 
 
 function TopScreen() {
 
 
-
-	const [dateText, setDateText] = useState("")
-	const [timeText, setTimeText] = useState("")
-
-	// ShuffledTextを再レンダリングさせるためのState
-	const [renderFlag, setRenderFlag] = useState(false)
+	// 日時と天気の情報をまとめたもの
+	const [weatherInfo, setWeatherInfo] = useState<WeatherInfo | null>(null)
+	const [isLoaded, setIsLoaded] = useState(false)
 
 
 
-	function reload() {
+	async function read() {
 
-		const dayAndDayOfWeek = dayjs().format("YYYY-MM-DD    dddd")
-		const time = dayjs().format("HH:mm")
+		// 一度Stateをnullに
+		setWeatherInfo(null)
 
-		setDateText(dayAndDayOfWeek)
-		setTimeText(time)
-		setRenderFlag(!renderFlag)
+		// 読み取りを実行
+		const weatherInfo = await WeatherService.readWeatherInfo()
+
+		// 新しい値でStateを更新
+		setWeatherInfo(weatherInfo)
+		setIsLoaded(true)
 	}
 
 
 
 	useEffect(() => {
 
-		reload()
+		read()
 		// eslint-disable-next-line
 	}, [])
 
@@ -41,32 +42,41 @@ function TopScreen() {
 
 		<div className="w-screen h-screen   flex justify-center items-center">
 
-			<div className="w-[1000px]">
 
-				<div className="text-center text-5xl text-primary">
 
-					<Shuffle renderFlag={renderFlag} className="uppercase whitespace-pre">{dateText}</Shuffle>
-					<Shuffle renderFlag={renderFlag} className="mt-4" endDelay={16}>{timeText}</Shuffle>
+			{!isLoaded &&
+				<p>Loading...</p>
+			}
+
+
+
+			{isLoaded && weatherInfo !== null &&
+
+				<div className="w-[1000px]">
+
+					<div className="text-center text-5xl text-primary">
+
+						<Shuffle className="uppercase whitespace-pre">{weatherInfo.dateText}</Shuffle>
+						<Shuffle className="mt-4" endDelay={16}>{weatherInfo.timeText}</Shuffle>
+					</div>
+
+
+
+					<div className="mt-12   grid grid-cols-3 gap-12 text-primary">
+
+						<WeatherCard area="osaka" weather={weatherInfo.osakaWeather} temp={weatherInfo.osakaTemp} humi={weatherInfo.osakaHumi} />
+						<WeatherCard area="nagoya" weather={weatherInfo.nagoyaWeather} temp={weatherInfo.nagoyaTemp} humi={weatherInfo.nagoyaHumi} />
+						<WeatherCard area="tokyo" weather={weatherInfo.tokyoWeather} temp={weatherInfo.tokyoTemp} humi={weatherInfo.tokyoHumi} />
+					</div>
+
+
+
+					<button onClick={() => read()} className="mt-16 block mx-auto   bg-cyber-button w-60 py-2   focus:outline-neutral-500 hover:brightness-150 active:brightness-100 transition">
+						<Shuffle endDelay={40} className="text-white text-3xl">RELOAD</Shuffle>
+					</button>
+
 				</div>
-
-
-
-				<div className="mt-12   grid grid-cols-3 gap-12 text-primary">
-
-					<WeatherCard area="osaka"/>
-					<WeatherCard area="nagoya"/>
-					<WeatherCard area="tokyo"/>
-				</div>
-
-
-
-				<button onClick={() => reload()} className="mt-16 block mx-auto   bg-cyber-button w-60 py-2   focus:outline-neutral-500 hover:brightness-150 active:brightness-100 transition">
-					<Shuffle renderFlag={renderFlag} endDelay={16} className="text-white text-3xl">RELOAD</Shuffle>
-				</button>
-
-
-			</div>
-
+			}
 
 		</div>
 	)

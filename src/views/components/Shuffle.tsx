@@ -7,7 +7,6 @@ interface Props {
 	children: string
 	className?: string
 	endDelay?: number
-	renderFlag?: boolean
 }
 
 
@@ -121,7 +120,7 @@ function Shuffle(props: Props) {
 
 
 		})()
-	}, [originalText, endDelay, props.renderFlag])
+	}, [originalText, endDelay])
 
 
 

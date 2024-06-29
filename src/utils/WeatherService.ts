@@ -1,22 +1,6 @@
 import dayjs from "dayjs"
 import ShuffleService from "./ShuffleService"
-
-
-
-type WeatherInfo = {
-	dateText: string
-	timeText: string
-
-	osakaWeather: string
-	osakaTemp: number
-	osakaHumi: number
-	nagoyaWeather: string
-	nagoyaTemp: number
-	nagoyaHumi: number
-	tokyoWeather: string
-	tokyoTemp: number
-	tokyoHumi: number
-}
+import WeatherInfo from "../entities/WeatherInfo"
 
 
 
@@ -24,10 +8,10 @@ class WeatherService {
 
 
 
-	static async readWeatherInfo(): Promise<WeatherInfo> {
+	static async readWeatherInfo(): Promise<WeatherInfo | null> {
 
 		// APIっぽく少し時間をかける
-		ShuffleService.sleep(400)
+		ShuffleService.sleep(1000)
 
 		// 現在の日時を取得
 		const dayAndDayOfWeek = dayjs().format("YYYY-MM-DD    dddd")
