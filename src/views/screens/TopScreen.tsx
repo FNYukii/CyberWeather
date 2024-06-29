@@ -1,7 +1,7 @@
 import dayjs from "dayjs"
-import ShuffledText from "../components/ShuffledText"
 import { useEffect, useState } from "react"
 import WeatherCard from "../components/WeatherCard"
+import Shuffle from "../components/Shuffle"
 
 
 
@@ -44,8 +44,9 @@ function TopScreen() {
 			<div className="w-[1000px]">
 
 				<div className="text-center text-5xl text-primary">
-					<ShuffledText text={dateText} renderFlag={renderFlag} className="uppercase whitespace-pre" />
-					<ShuffledText text={timeText} renderFlag={renderFlag} endDelay={16} className="mt-4" />
+
+					<Shuffle renderFlag={renderFlag} className="uppercase whitespace-pre">{dateText}</Shuffle>
+					<Shuffle renderFlag={renderFlag} className="mt-4" endDelay={16}>{timeText}</Shuffle>
 				</div>
 
 
@@ -60,7 +61,7 @@ function TopScreen() {
 
 
 				<button onClick={() => reload()} className="mt-16 block mx-auto   bg-cyber-button w-60 py-2   focus:outline-neutral-500 hover:brightness-150 active:brightness-100 transition">
-					<ShuffledText text="RELOAD" renderFlag={renderFlag} endDelay={16} className="text-white text-3xl"/>
+					<Shuffle renderFlag={renderFlag} endDelay={16} className="text-white text-3xl">RELOAD</Shuffle>
 				</button>
 
 

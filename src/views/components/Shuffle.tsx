@@ -4,7 +4,7 @@ import ShuffleService from "../../utils/ShuffleService"
 
 
 interface Props {
-	text: string
+	children: string
 	className?: string
 	endDelay?: number
 	renderFlag?: boolean
@@ -12,11 +12,11 @@ interface Props {
 
 
 
-function ShuffledText(props: Props) {
+function Shuffle(props: Props) {
 
 
 
-	const originalText = props.text
+	const originalText = props.children
 	const endDelay = props.endDelay ?? 0
 
 	const [text, setText] = useState<string>("")
@@ -131,4 +131,4 @@ function ShuffledText(props: Props) {
 	)
 }
 
-export default ShuffledText
+export default Shuffle

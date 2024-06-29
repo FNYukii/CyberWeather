@@ -1,4 +1,6 @@
-import ShuffledText from "./ShuffledText"
+import Shuffle from "./Shuffle"
+
+
 
 interface Props {
 	area: string
@@ -13,10 +15,10 @@ function WeatherCard(props: Props) {
 
 		<div>
 			<div className="w-full bg-primary/20 py-1">
-				<ShuffledText text={props.area} endDelay={20} className="uppercase text-4xl text-center"/>
+				<Shuffle endDelay={20} className="uppercase text-4xl text-center">{props.area}</Shuffle>
 			</div>
 
-			<ShuffledText text="rainy" endDelay={40} className="mt-4 uppercase text-4xl"/>
+			<Shuffle endDelay={24} className="mt-4 uppercase text-4xl">rainy</Shuffle>
 
 		</div>
 	)
