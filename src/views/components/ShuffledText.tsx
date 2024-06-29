@@ -44,10 +44,10 @@ function ShuffledText(props: Props) {
 				// 0置き換えする文字を指すインデックスをランダムに生成
 				chipIndexes = ShuffleService.makeRandomNumbers(originalText.length, originalText.length / 2)
 
-				// ハイフンや空白以外が0に置き換えられそうなら、フラグ変数を有効にしてやりなおし
+				// 記号が0置き換え対象になっていたら、フラグ変数を有効にしてやりなおし
 				chipIndexes.forEach(chipIndex => {
 
-					if (originalText[chipIndex] === "-" || originalText[chipIndex] === " ") {
+					if (["-", ":", " "].includes(originalText[chipIndex])) {
 						isChipsMark = true
 					}
 				})
