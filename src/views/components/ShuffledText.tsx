@@ -69,8 +69,11 @@ function ShuffledText(props: Props) {
 
 					if (chipIndexes.includes(i)) {
 
-						const rand = Math.floor(Math.random() * 8 + 2) // 0 ~ 9
-						newText += `${rand}`
+						const letters = "023456789"
+						const rand = Math.floor(Math.random() * letters.length)
+						const randomNumberWithout1 = letters[rand]
+
+						newText += randomNumberWithout1
 					}
 				}
 
