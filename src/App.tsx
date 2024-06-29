@@ -1,9 +1,11 @@
+import TopScreen from "./screens/TopScreen"
+
 function App() {
 
-  return (
+	return (
 
-    <h1>Hello</h1>
-  )
+		<TopScreen />
+	)
 }
 
 export default App
