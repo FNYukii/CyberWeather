@@ -28,7 +28,7 @@ function TopScreen() {
 
 		reload()
 
-	}, [dateText, timeText])
+	}, [])
 
 
 
