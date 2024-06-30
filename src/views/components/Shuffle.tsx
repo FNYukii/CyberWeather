@@ -27,6 +27,7 @@ function Shuffle(props: Props) {
 
 
 
+			// テキストが空なら演出を行わない
 			if (originalText === "") return
 
 
@@ -120,7 +121,8 @@ function Shuffle(props: Props) {
 
 
 		})()
-	}, [originalText, endDelay])
+		// eslint-disable-next-line
+	}, [originalText])
 
 
 
