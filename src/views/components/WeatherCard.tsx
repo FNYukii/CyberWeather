@@ -2,6 +2,7 @@ import Shuffle from "./Shuffle"
 import { BsCloud } from "react-icons/bs"
 import { BsSun } from "react-icons/bs"
 import { BsCloudRain } from "react-icons/bs"
+import ShuffleIcon from "./ShuffleIcon"
 
 
 
@@ -32,7 +33,7 @@ function WeatherCard(props: Props) {
 
 				<Shuffle endDelay={32} className="text-4xl">{props.weather}</Shuffle>
 
-				<div className="text-3xl">
+				<ShuffleIcon endDelay={36} className="text-3xl">
 
 					{props.weather === "sunny" &&
 						<BsSun />
@@ -45,7 +46,7 @@ function WeatherCard(props: Props) {
 					{props.weather === "rainy" &&
 						<BsCloudRain />
 					}
-				</div>
+				</ShuffleIcon>
 			</div>
 
 
