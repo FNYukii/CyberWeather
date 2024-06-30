@@ -53,7 +53,7 @@ function Shuffle(props: Props) {
 				// eslint-disable-next-line
 				chipIndexes.forEach(chipIndex => {
 
-					if (["-", ":", " "].includes(originalText[chipIndex])) {
+					if (["-", ":", " ", "."].includes(originalText[chipIndex])) {
 						isChipsMark = true
 					}
 				})
@@ -86,7 +86,7 @@ function Shuffle(props: Props) {
 			// 第二段階: chippedTextの0の部分をしばらくシャッフル
 			// 例: "OR0N0E" -> "OR3N7E" -> "OR8N2E" -> "OR3N4E"
 
-			for (let i = 0; i < 20 + endDelay; i++) {
+			for (let i = 0; i < 12 + endDelay; i++) {
 
 				let newText = ""
 
