@@ -19,7 +19,11 @@ class ShuffleService {
 			randomNumbers.push(rand)
 		}
 
+		// 重複値を排除
 		randomNumbers = Array.from(new Set(randomNumbers))
+
+		// 小さい順に並び替え
+		randomNumbers.sort((a, b) => a - b)
 
 		return randomNumbers
 	}

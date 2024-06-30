@@ -61,6 +61,10 @@ function Shuffle(props: Props) {
 			} while (isChipsMark)
 
 
+
+			console.log(chipIndexes)
+
+
 			// ランダムに0置き換えされたchippedTextを生成
 			const chippedText = ShuffleService.makeChippedText(originalText, chipIndexes)
 
@@ -90,21 +94,21 @@ function Shuffle(props: Props) {
 				let newText = ""
 
 				// 新しい文字列を生成
-				for (let i = 0; i < chippedText.length; i++) {
+				for (let j = 0; j < chippedText.length; j++) {
 
 					// 0置き換え対象でない文字位置なら、本来の文字を追加
-					if (!chipIndexes.includes(i)) {
-						newText += chippedText[i]
+					if (!chipIndexes.includes(j)) {
+						newText += originalText[j]
 					}
 
 					// 0置き換え対象の文字位置なら、1以外のランダムな数値を追加
-					if (chipIndexes.includes(i)) {
+					if (chipIndexes.includes(j)) {
 
 						const letters = "023456789"
 						const rand = Math.floor(Math.random() * letters.length)
-						const randomNumberWithout1 = letters[rand]
+						const randomNumeric = letters[rand]
 
-						newText += randomNumberWithout1
+						newText += randomNumeric
 					}
 				}
 
@@ -115,7 +119,50 @@ function Shuffle(props: Props) {
 
 
 
-			// 第三段階
+			// 第三段階: 第二段階と同じような演出を行うが、0置き換えされた文字を最初の方から、少しずつ本来の文字へ戻していく
+			// 例: "OR2N7E" -> "ORAN9E" -> "ORAN5E" -> "ORANGE"
+			let newChipIndexes = chipIndexes
+
+			for (let i = 0; i < chipIndexes.length * 8 + 100; i++) {
+
+				let newText = ""
+
+				// 新しい文字列を生成
+				for (let j = 0; j < chippedText.length; j++) {
+
+					// 0置き換え対象でない文字位置なら、本来の文字を追加
+					if (!newChipIndexes.includes(j)) {
+						newText += originalText[j]
+					}
+
+					// 0置き換え対象の文字位置なら、1以外のランダムな数値を追加
+					if (newChipIndexes.includes(j)) {
+
+						const letters = "023456789"
+						const rand = Math.floor(Math.random() * letters.length)
+						const randomNumeric = letters[rand]
+
+						newText += randomNumeric
+					}
+				}
+
+				// 生成した文字列を表示
+				setText(newText)
+				await ShuffleService.sleep()
+
+
+
+				// 第三段階専用
+				if (i == 0 || i % 8 == 0) {
+					console.log(newChipIndexes)
+					newChipIndexes.splice(0, 1)
+				}
+
+			}
+
+
+
+			// 改めてoriginalTextを表示して終了
 			setText(originalText)
 
 
