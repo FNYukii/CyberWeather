@@ -24,14 +24,14 @@ function WeatherCard(props: Props) {
 		<div>
 
 			<div className="w-full bg-primary/20 py-1">
-				<Shuffle endDelay={24} className="text-4xl text-center">{props.area}</Shuffle>
+				<Shuffle extraFrames={24} className="text-4xl text-center">{props.area}</Shuffle>
 			</div>
 
 
 
 			<div className="mt-6   flex justify-between items-center   text-3xl">
 
-				<Shuffle endDelay={32}>{props.weather}</Shuffle>
+				<Shuffle extraFrames={32}>{props.weather}</Shuffle>
 
 				<ShuffleIcon endDelay={36}>
 
@@ -58,7 +58,7 @@ function WeatherCard(props: Props) {
 					<meter max={50} value={props.temp} className="meter-cyber   w-full h-2" />
 
 					<p className="whitespace-nowrap">
-						<Shuffle endDelay={40} className="inline">{`${props.temp}`}</Shuffle>
+						<Shuffle extraFrames={40} className="inline">{`${props.temp}`}</Shuffle>
 						<span> °C</span>
 					</p>
 
@@ -69,7 +69,7 @@ function WeatherCard(props: Props) {
 					<meter max={100} value={props.humi} className="meter-cyber   w-full h-2" />
 
 					<p className="whitespace-nowrap">
-						<Shuffle endDelay={44} className="inline">{`${props.humi}`}</Shuffle>
+						<Shuffle extraFrames={44} className="inline">{`${props.humi}`}</Shuffle>
 						<span> %</span>
 					</p>
 				</div>

@@ -6,7 +6,7 @@ import ShuffleService from "../../utils/ShuffleService"
 interface Props {
 	children: string
 	className?: string
-	endDelay?: number
+	extraFrames?: number
 }
 
 
@@ -16,7 +16,7 @@ function Shuffle(props: Props) {
 
 
 	const originalText = props.children
-	const endDelay = props.endDelay ?? 0
+	const endDelay = props.extraFrames ?? 0
 
 	const [text, setText] = useState<string>("")
 
