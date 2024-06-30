@@ -62,22 +62,22 @@ function TopScreen() {
 					<div className="text-center text-5xl">
 
 						<Shuffle className="whitespace-pre">{weatherInfo.dateText}</Shuffle>
-						{/* <Shuffle className="mt-4" endDelay={16}>{weatherInfo.timeText}</Shuffle> */}
+						<Shuffle className="mt-4" endDelay={16}>{weatherInfo.timeText}</Shuffle>
 					</div>
 
 
 
 					<div className="mt-12   grid grid-cols-3 gap-12">
 
-						{/* <WeatherCard area="osaka" weather={weatherInfo.osakaWeather} temp={weatherInfo.osakaTemp} humi={weatherInfo.osakaHumi} />
+						<WeatherCard area="osaka" weather={weatherInfo.osakaWeather} temp={weatherInfo.osakaTemp} humi={weatherInfo.osakaHumi} />
 						<WeatherCard area="nagoya" weather={weatherInfo.nagoyaWeather} temp={weatherInfo.nagoyaTemp} humi={weatherInfo.nagoyaHumi} />
-						<WeatherCard area="tokyo" weather={weatherInfo.tokyoWeather} temp={weatherInfo.tokyoTemp} humi={weatherInfo.tokyoHumi} /> */}
+						<WeatherCard area="tokyo" weather={weatherInfo.tokyoWeather} temp={weatherInfo.tokyoTemp} humi={weatherInfo.tokyoHumi} />
 					</div>
 
 
 
 					<button onClick={() => read()} className="mt-16 block mx-auto   bg-cyber-button w-60 py-2   focus:outline-neutral-500 hover:brightness-150 active:brightness-100 transition">
-						{/* <Shuffle endDelay={40} className="text-white text-3xl">RELOAD</Shuffle> */}
+						<Shuffle endDelay={40} className="text-white text-3xl">RELOAD</Shuffle>
 					</button>
 
 				</div>
