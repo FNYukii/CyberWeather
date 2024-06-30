@@ -31,7 +31,7 @@ function WeatherCard(props: Props) {
 
 			<div className="mt-4   flex justify-between items-center">
 
-				<Shuffle endDelay={32} className="text-4xl">{props.weather}</Shuffle>
+				<Shuffle endDelay={32} className="text-3xl">{props.weather}</Shuffle>
 
 				<ShuffleIcon endDelay={36} className="text-3xl">
 
