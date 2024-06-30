@@ -67,7 +67,7 @@ function TopScreen() {
 
 
 
-					<div className="mt-12   grid grid-cols-3 gap-12">
+					<div className="mt-16   grid grid-cols-3 gap-16">
 
 						<WeatherCard area="osaka" weather={weatherInfo.osakaWeather} temp={weatherInfo.osakaTemp} humi={weatherInfo.osakaHumi} />
 						<WeatherCard area="nagoya" weather={weatherInfo.nagoyaWeather} temp={weatherInfo.nagoyaTemp} humi={weatherInfo.nagoyaHumi} />

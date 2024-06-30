@@ -29,11 +29,11 @@ function WeatherCard(props: Props) {
 
 
 
-			<div className="mt-4   flex justify-between items-center">
+			<div className="mt-6   flex justify-between items-center   text-3xl">
 
-				<Shuffle endDelay={32} className="text-3xl">{props.weather}</Shuffle>
+				<Shuffle endDelay={32}>{props.weather}</Shuffle>
 
-				<ShuffleIcon endDelay={36} className="text-3xl">
+				<ShuffleIcon endDelay={36}>
 
 					{props.weather === "sunny" &&
 						<BsSun />
@@ -47,6 +47,23 @@ function WeatherCard(props: Props) {
 						<BsCloudRain />
 					}
 				</ShuffleIcon>
+			</div>
+
+
+
+			<div className="mt-6   text-2xl">
+
+				<div className="flex justify-between items-center gap-4">
+
+					<meter max={50} value={props.temp} className="meter-cyber   w-full h-2" />
+					<p className="whitespace-nowrap">{props.temp} °C</p>
+				</div>
+
+				<div className="mt-4   flex justify-between items-center gap-4">
+
+					<meter max={100} value={props.humi} className="meter-cyber   w-full h-2" />
+					<p className="whitespace-nowrap">{props.humi} %</p>
+				</div>
 			</div>
 
 

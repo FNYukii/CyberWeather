@@ -22,14 +22,14 @@ class WeatherService {
 			dateText: dayAndDayOfWeek,
 			timeText: time,
 			osakaWeather: "rainy",
-			osakaTemp: 28.0,
-			osakaHumi: 55.8,
+			osakaTemp: 20.0,
+			osakaHumi: 87.8,
 			nagoyaWeather: "cloudy",
 			nagoyaTemp: 27.2,
-			nagoyaHumi: 58.3,
+			nagoyaHumi: 61.3,
 			tokyoWeather: "sunny",
-			tokyoTemp: 30.1,
-			tokyoHumi: 49.0,
+			tokyoTemp: 43.1,
+			tokyoHumi: 42.0,
 		}
 
 		return weatherInfo
