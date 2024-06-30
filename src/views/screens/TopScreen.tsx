@@ -17,15 +17,16 @@ function TopScreen() {
 
 	async function read() {
 
-		// 一度Stateをnullに
+		// 一度Stateをリセット
+		setIsLoaded(false)
 		setWeatherInfo(null)
 
 		// 読み取りを実行
 		const weatherInfo = await WeatherService.readWeatherInfo()
 
 		// 新しい値でStateを更新
-		setWeatherInfo(weatherInfo)
 		setIsLoaded(true)
+		setWeatherInfo(weatherInfo)
 	}
 
 
@@ -45,11 +46,11 @@ function TopScreen() {
 
 
 			{!isLoaded &&
-				<p>Loading...</p>
+				<p className="text-3xl">Loading...</p>
 			}
 
 			{isLoaded && weatherInfo === null &&
-				<p>Error!</p>
+				<p className="text-3xl">Error!</p>
 			}
 
 

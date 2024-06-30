@@ -11,7 +11,7 @@ class WeatherService {
 	static async readWeatherInfo(): Promise<WeatherInfo | null> {
 
 		// APIっぽく少し時間をかける
-		ShuffleService.sleep(1000)
+		await ShuffleService.sleep(400)
 
 		// 現在の日時を取得
 		const dayAndDayOfWeek = dayjs().format("YYYY-MM-DD    dddd")
