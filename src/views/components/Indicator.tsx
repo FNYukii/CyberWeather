@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import ShuffleService from "../../utils/ShuffleService"
 
 
@@ -15,14 +15,22 @@ interface Props {
 
 function Indicator(props: Props) {
 
+	// useEffectが発火したかどうか
+	const isEffectedRef = useRef(false);
 
 
+	// 現在のmeterの長さ
 	const [value, setValue] = useState(0)
 
 
 
 	useEffect(() => {
 		(async() => {
+
+			// アニメーションが2回実行されると困るので、Refを使って制御
+			if (isEffectedRef.current === true) return
+			isEffectedRef.current = true
+
 
 			// 少しずつバーを大きくしていく
 			for (let i = 0; i < 20; i++) {
