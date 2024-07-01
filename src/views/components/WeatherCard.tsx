@@ -51,22 +51,20 @@ function WeatherCard(props: Props) {
 
 
 
-			<div className="mt-6   text-2xl">
+			<div className="mt-6   flex justify-between gap-4">
 
-				<div className="flex justify-between items-center gap-4">
+				<div className="flex flex-col justify-around gap-4   w-full">
 
 					<meter max={50} value={props.temp} className="meter-cyber   w-full h-2" />
+					<meter max={100} value={props.humi} className="meter-cyber   w-full h-2" />
+				</div>
+
+				<div className="flex flex-col gap-4 items-end   text-2xl">
 
 					<p className="whitespace-nowrap">
 						<Shuffle extraFrames={40} className="inline">{`${props.temp}`}</Shuffle>
 						<span> °C</span>
 					</p>
-
-				</div>
-
-				<div className="mt-4   flex justify-between items-center gap-4">
-
-					<meter max={100} value={props.humi} className="meter-cyber   w-full h-2" />
 
 					<p className="whitespace-nowrap">
 						<Shuffle extraFrames={44} className="inline">{`${props.humi}`}</Shuffle>
