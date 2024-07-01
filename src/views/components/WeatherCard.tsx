@@ -4,13 +4,14 @@ import { BsSun } from "react-icons/bs"
 import { BsCloudRain } from "react-icons/bs"
 import ShuffleIcon from "./ShuffleIcon"
 import Indicator from "./Indicator"
+import WeatherService from "../../utils/WeatherService"
 
 
 
 interface Props {
 	area: string
 
-	weather: "sunny" | "cloudy" | "rainy"
+	weatherCode: number
 	temp: number
 	humi: number
 	className?: string
@@ -19,6 +20,9 @@ interface Props {
 
 
 function WeatherCard(props: Props) {
+
+
+	const weatherLabel = WeatherService.weatherLabelFromCode(props.weatherCode)
 
 	return (
 
@@ -32,19 +36,19 @@ function WeatherCard(props: Props) {
 
 			<div className="mt-6   flex justify-between items-center   text-3xl">
 
-				<Shuffle extraFrames={32}>{props.weather}</Shuffle>
+				<Shuffle extraFrames={32}>{weatherLabel}</Shuffle>
 
 				<ShuffleIcon endDelay={36}>
 
-					{props.weather === "sunny" &&
+					{weatherLabel === "sunny" &&
 						<BsSun />
 					}
 
-					{props.weather === "cloudy" &&
+					{weatherLabel === "cloudy" &&
 						<BsCloud />
 					}
 
-					{props.weather === "rainy" &&
+					{weatherLabel === "rainy" &&
 						<BsCloudRain />
 					}
 				</ShuffleIcon>

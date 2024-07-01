@@ -69,9 +69,9 @@ function TopScreen() {
 
 					<div className="mt-16   grid grid-cols-3 gap-16">
 
-						<WeatherCard area="osaka" weather={weatherInfo.osakaWeather} temp={weatherInfo.osakaTemp} humi={weatherInfo.osakaHumi} />
-						<WeatherCard area="nagoya" weather={weatherInfo.nagoyaWeather} temp={weatherInfo.nagoyaTemp} humi={weatherInfo.nagoyaHumi} />
-						<WeatherCard area="tokyo" weather={weatherInfo.tokyoWeather} temp={weatherInfo.tokyoTemp} humi={weatherInfo.tokyoHumi} />
+						<WeatherCard area="osaka" weatherCode={weatherInfo.osakaWeatherCode} temp={weatherInfo.osakaTemp} humi={weatherInfo.osakaHumi} />
+						<WeatherCard area="nagoya" weatherCode={weatherInfo.nagoyaWeatherCode} temp={weatherInfo.nagoyaTemp} humi={weatherInfo.nagoyaHumi} />
+						<WeatherCard area="tokyo" weatherCode={weatherInfo.tokyoWeatherCode} temp={weatherInfo.tokyoTemp} humi={weatherInfo.tokyoHumi} />
 					</div>
 
 

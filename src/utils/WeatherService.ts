@@ -1,5 +1,4 @@
 import dayjs from "dayjs"
-import ShuffleService from "./ShuffleService"
 import WeatherInfo from "../entities/WeatherInfo"
 
 
@@ -57,18 +56,39 @@ class WeatherService {
 		const weatherInfo: WeatherInfo = {
 			dateText: dayAndDayOfWeek,
 			timeText: time,
-			osakaWeather: "rainy",
+			osakaWeatherCode: 0,
 			osakaTemp: 20.0,
 			osakaHumi: 87.8,
-			nagoyaWeather: "cloudy",
+			nagoyaWeatherCode: 2,
 			nagoyaTemp: 27.2,
 			nagoyaHumi: 61.3,
-			tokyoWeather: "sunny",
+			tokyoWeatherCode: 51,
 			tokyoTemp: tokyoWeather.temp,
 			tokyoHumi: tokyoWeather.humi,
 		}
 
 		return weatherInfo
+	}
+
+
+
+	static weatherLabelFromCode(code: number): string {
+
+		let label = "undefined"
+
+		if ([0, 1].includes(code)) {
+			label = "sunny"
+		}
+
+		if ([2, 3].includes(code)) {
+			label = "cloudy"
+		}
+
+		if ([51, 52, 53, 56, 57, 61, 63, 65, 66, 67].includes(code)) {
+			label = "rainy"
+		}
+
+		return label
 	}
 
 

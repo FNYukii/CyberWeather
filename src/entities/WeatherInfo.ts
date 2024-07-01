@@ -2,13 +2,13 @@ type WeatherInfo = {
 	dateText: string
 	timeText: string
 
-	osakaWeather: "sunny" | "cloudy" | "rainy"
+	osakaWeatherCode: number
 	osakaTemp: number
 	osakaHumi: number
-	nagoyaWeather: "sunny" | "cloudy" | "rainy"
+	nagoyaWeatherCode: number
 	nagoyaTemp: number
 	nagoyaHumi: number
-	tokyoWeather: "sunny" | "cloudy" | "rainy"
+	tokyoWeatherCode: number
 	tokyoTemp: number
 	tokyoHumi: number
 }
