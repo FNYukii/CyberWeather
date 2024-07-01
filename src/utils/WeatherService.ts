@@ -7,7 +7,7 @@ class WeatherService {
 
 
 
-	static async readTokyoWeather(): Promise<{temp: number, humi: number} | null> {
+	static async readTokyoWeather(): Promise<{weatherCode: number, temp: number, humi: number} | null> {
 
 		try {
 
@@ -21,11 +21,12 @@ class WeatherService {
 			const hour = dayjs().hour()
 
 			// データの中から必要な値を抽出
+			const weatherCode = data.hourly.weather_code[hour - 1]
 			const temp = data.hourly.temperature_2m[hour - 1]
 			const humi = data.hourly.relative_humidity_2m[hour - 1]
 
 			// オブジェクトにまとめる
-			const object = {temp: temp, humi: humi}
+			const object = {weatherCode: weatherCode, temp: temp, humi: humi}
 
 			return object
 
@@ -62,7 +63,7 @@ class WeatherService {
 			nagoyaWeatherCode: 2,
 			nagoyaTemp: 27.2,
 			nagoyaHumi: 61.3,
-			tokyoWeatherCode: 51,
+			tokyoWeatherCode: tokyoWeather.weatherCode,
 			tokyoTemp: tokyoWeather.temp,
 			tokyoHumi: tokyoWeather.humi,
 		}
