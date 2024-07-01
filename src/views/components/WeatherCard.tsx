@@ -3,6 +3,7 @@ import { BsCloud } from "react-icons/bs"
 import { BsSun } from "react-icons/bs"
 import { BsCloudRain } from "react-icons/bs"
 import ShuffleIcon from "./ShuffleIcon"
+import Indicator from "./Indicator"
 
 
 
@@ -55,21 +56,21 @@ function WeatherCard(props: Props) {
 
 				<div className="flex flex-col justify-around gap-4   w-full">
 
-					<meter max={50} value={props.temp} className="meter-cyber   w-full h-2" />
-					<meter max={100} value={props.humi} className="meter-cyber   w-full h-2" />
+					<Indicator max={50} value={props.temp} className="meter-cyber   w-full h-2" />
+					<Indicator max={100} value={props.humi} className="meter-cyber   w-full h-2" />
 				</div>
 
 				<div className="flex flex-col gap-4 items-end   text-2xl">
 
-					<p className="whitespace-nowrap">
+					<div className="whitespace-nowrap">
 						<Shuffle extraFrames={40} className="inline">{`${props.temp}`}</Shuffle>
 						<span> °C</span>
-					</p>
+					</div>
 
-					<p className="whitespace-nowrap">
+					<div className="whitespace-nowrap">
 						<Shuffle extraFrames={44} className="inline">{`${props.humi}`}</Shuffle>
 						<span> %</span>
-					</p>
+					</div>
 				</div>
 			</div>
 
