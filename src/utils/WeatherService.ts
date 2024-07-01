@@ -7,12 +7,33 @@ class WeatherService {
 
 
 
-	static async readTokyoWeather(): Promise<{weatherCode: number, temp: number, humi: number} | null> {
+	static async readCityWeather(city: "osaka" | "nagoya" | "tokyo"): Promise<{weatherCode: number, temp: number, humi: number} | null> {
 
+		// 各都市用のAPIのURL
+		const osakaUrl = "https://api.open-meteo.com/v1/forecast?latitude=34.6937&longitude=135.5022&hourly=temperature_2m,relative_humidity_2m,weather_code&timezone=Asia%2FTokyo&forecast_days=1"
+		const nagoyaUrl = "https://api.open-meteo.com/v1/forecast?latitude=35.1815&longitude=136.9064&hourly=temperature_2m,relative_humidity_2m,weather_code&timezone=Asia%2FTokyo&forecast_days=1"
+		const tokyoUrl = "https://api.open-meteo.com/v1/forecast?latitude=35.6895&longitude=139.6917&hourly=temperature_2m,relative_humidity_2m,weather_code&timezone=Asia%2FTokyo&forecast_days=1"
+
+
+		// 使用するURLを決める
+		let url = ""
+
+		if (city === "osaka") {
+			url = osakaUrl
+		}
+		if (city === "nagoya") {
+			url = nagoyaUrl
+		}
+		if (city === "tokyo") {
+			url = tokyoUrl
+		}
+
+		
+		// 読み取りを行う
 		try {
 
 			// APIを呼び出す。今回は無料&登録不要の天気API「Open Meteo」を利用
-			const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=35.6895&longitude=139.6917&hourly=temperature_2m,relative_humidity_2m,weather_code&timezone=Asia%2FTokyo&forecast_days=1')
+			const response = await fetch(url)
 			
 			// 受け取ったJSON文字列をJavaScriptオブジェクトに変換
 			const data = await response.json()
@@ -46,23 +67,27 @@ class WeatherService {
 		const time = dayjs().format("HH:mm")
 
 
+		// 各都市の天気を読み取る
+		const osakaWeather = await this.readCityWeather("osaka")
+		if (osakaWeather === null) return null
 
-		// Tokyoの天気を読み取ってみる
-		const tokyoWeather = await this.readTokyoWeather()
+		const nagoyaWeather = await this.readCityWeather("nagoya")
+		if (nagoyaWeather === null) return null
+
+		const tokyoWeather = await this.readCityWeather("tokyo")
 		if (tokyoWeather === null) return null
 
 		
-
 		// weatherInfoオブジェクトを生成
 		const weatherInfo: WeatherInfo = {
 			dateText: dayAndDayOfWeek,
 			timeText: time,
-			osakaWeatherCode: 0,
-			osakaTemp: 20.0,
-			osakaHumi: 87.8,
-			nagoyaWeatherCode: 2,
-			nagoyaTemp: 27.2,
-			nagoyaHumi: 61.3,
+			osakaWeatherCode: osakaWeather.weatherCode,
+			osakaTemp: osakaWeather.temp,
+			osakaHumi: osakaWeather.humi,
+			nagoyaWeatherCode: nagoyaWeather.weatherCode,
+			nagoyaTemp: nagoyaWeather.temp,
+			nagoyaHumi: nagoyaWeather.humi,
 			tokyoWeatherCode: tokyoWeather.weatherCode,
 			tokyoTemp: tokyoWeather.temp,
 			tokyoHumi: tokyoWeather.humi,
