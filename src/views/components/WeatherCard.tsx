@@ -1,10 +1,14 @@
 import Shuffle from "./Shuffle"
-import { BsCloud } from "react-icons/bs"
-import { BsSun } from "react-icons/bs"
-import { BsCloudRain } from "react-icons/bs"
 import ShuffleIcon from "./ShuffleIcon"
 import Indicator from "./Indicator"
 import WeatherService from "../../utils/WeatherService"
+
+import { BsSun } from "react-icons/bs"
+import { BsCloud } from "react-icons/bs"
+import { BsCloudFog2 } from "react-icons/bs"
+import { BsCloudRain } from "react-icons/bs"
+import { BsLightning } from "react-icons/bs"
+import { BsSnow } from "react-icons/bs"
 
 
 
@@ -22,7 +26,12 @@ interface Props {
 function WeatherCard(props: Props) {
 
 
+
+	// Weather Codeを天気名に変換
+	// 例 0 -> "sunny", 51 -> "rainy"
 	const weatherLabel = WeatherService.weatherLabelFromCode(props.weatherCode)
+
+
 
 	return (
 
@@ -48,8 +57,20 @@ function WeatherCard(props: Props) {
 						<BsCloud />
 					}
 
+					{weatherLabel === "fog" &&
+						<BsCloudFog2 />
+					}
+
 					{weatherLabel === "rainy" &&
 						<BsCloudRain />
+					}
+
+					{weatherLabel === "snowy" &&
+						<BsSnow />
+					}
+
+					{weatherLabel === "thunder" &&
+						<BsLightning />
 					}
 				</ShuffleIcon>
 			</div>

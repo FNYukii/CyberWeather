@@ -7,7 +7,7 @@ class WeatherService {
 
 
 
-	static async readCityWeather(city: "osaka" | "nagoya" | "tokyo"): Promise<{weatherCode: number, temp: number, humi: number} | null> {
+	static async readCityWeather(city: "osaka" | "nagoya" | "tokyo"): Promise<{ weatherCode: number, temp: number, humi: number } | null> {
 
 		// 各都市用のAPIのURL
 		const osakaUrl = "https://api.open-meteo.com/v1/forecast?latitude=34.6937&longitude=135.5022&hourly=temperature_2m,relative_humidity_2m,weather_code&timezone=Asia%2FTokyo&forecast_days=1"
@@ -28,13 +28,13 @@ class WeatherService {
 			url = tokyoUrl
 		}
 
-		
+
 		// 読み取りを行う
 		try {
 
 			// APIを呼び出す。今回は無料&登録不要の天気API「Open Meteo」を利用
 			const response = await fetch(url)
-			
+
 			// 受け取ったJSON文字列をJavaScriptオブジェクトに変換
 			const data = await response.json()
 
@@ -47,12 +47,12 @@ class WeatherService {
 			const humi = data.hourly.relative_humidity_2m[hour - 1]
 
 			// オブジェクトにまとめる
-			const object = {weatherCode: weatherCode, temp: temp, humi: humi}
+			const object = { weatherCode: weatherCode, temp: temp, humi: humi }
 
 			return object
 
 		} catch (error) {
-			
+
 			console.log(`FAIL! Error to call API. ${error}`)
 			return null
 		}
@@ -77,7 +77,7 @@ class WeatherService {
 		const tokyoWeather = await this.readCityWeather("tokyo")
 		if (tokyoWeather === null) return null
 
-		
+
 		// weatherInfoオブジェクトを生成
 		const weatherInfo: WeatherInfo = {
 			dateText: dayAndDayOfWeek,
@@ -98,20 +98,58 @@ class WeatherService {
 
 
 
-	static weatherLabelFromCode(code: number): string {
+	static weatherLabelFromCode(code: number): "sunny" | "cloudy" | "fog" | "rainy" | "snowy" | "thunder" | "unknown" {
 
-		let label = "undefined"
+		let label: "sunny" | "cloudy" | "fog" | "rainy" | "snowy" | "thunder" | "unknown" = "unknown"
 
-		if ([0, 1].includes(code)) {
-			label = "sunny"
-		}
 
-		if ([2, 3].includes(code)) {
-			label = "cloudy"
-		}
+		switch (code) {
 
-		if ([51, 52, 53, 56, 57, 61, 63, 65, 66, 67].includes(code)) {
-			label = "rainy"
+			case 0:
+			case 1:
+				label = "sunny"
+				break
+
+			case 2:
+			case 3:
+				label = "cloudy"
+				break
+
+			case 45:
+			case 48:
+				label = "fog"
+				break
+
+			case 51:
+			case 53:
+			case 55:
+			case 56:
+			case 57:
+			case 61:
+			case 63:
+			case 65:
+			case 66:
+			case 67:
+				label = "rainy"
+				break
+
+			case 71:
+			case 73:
+			case 75:
+			case 77:
+			case 85:
+			case 88:
+				label = "snowy"
+				break
+
+			case 95:
+			case 96:
+			case 99:
+				label = "thunder"
+				break
+
+			default:
+				label = "unknown"
 		}
 
 		return label
