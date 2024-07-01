@@ -26,9 +26,9 @@ function WeatherCard(props: Props) {
 
 	return (
 
-		<div>
+		<div className={props.className}>
 
-			<div className="w-full bg-primary/20 py-1">
+			<div className="bg-primary/20   w-80 py-1">
 				<Shuffle extraFrames={24} className="text-4xl text-center">{props.area}</Shuffle>
 			</div>
 

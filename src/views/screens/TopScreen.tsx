@@ -41,7 +41,7 @@ function TopScreen() {
 
 	return (
 
-		<div className="w-screen h-screen   flex justify-center items-center">
+		<div className="w-screen lg:h-screen   py-36   flex justify-center items-center">
 
 
 
@@ -57,9 +57,9 @@ function TopScreen() {
 
 			{isLoaded && weatherInfo !== null &&
 
-				<div className="w-[1000px]">
+				<div className="w-full px-4   lg:w-[1024px] lg:px-0">
 
-					<div className="text-center text-5xl">
+					<div className="text-center text-3xl sm:text-5xl">
 
 						<Shuffle className="whitespace-pre">{weatherInfo.dateText}</Shuffle>
 						<Shuffle className="mt-4" extraFrames={16}>{weatherInfo.timeText}</Shuffle>
@@ -67,11 +67,11 @@ function TopScreen() {
 
 
 
-					<div className="mt-16   grid grid-cols-3 gap-16">
+					<div className="mt-16 mx-auto-   grid grid-cols-1 lg:grid-cols-3 gap-16">
 
-						<WeatherCard area="osaka" weatherCode={weatherInfo.osakaWeatherCode} temp={weatherInfo.osakaTemp} humi={weatherInfo.osakaHumi} />
-						<WeatherCard area="nagoya" weatherCode={weatherInfo.nagoyaWeatherCode} temp={weatherInfo.nagoyaTemp} humi={weatherInfo.nagoyaHumi} />
-						<WeatherCard area="tokyo" weatherCode={weatherInfo.tokyoWeatherCode} temp={weatherInfo.tokyoTemp} humi={weatherInfo.tokyoHumi} />
+						<WeatherCard area="osaka" weatherCode={weatherInfo.osakaWeatherCode} temp={weatherInfo.osakaTemp} humi={weatherInfo.osakaHumi} className="max-w-96 mx-auto"/>
+						<WeatherCard area="nagoya" weatherCode={weatherInfo.nagoyaWeatherCode} temp={weatherInfo.nagoyaTemp} humi={weatherInfo.nagoyaHumi} className="max-w-96 mx-auto"/>
+						<WeatherCard area="tokyo" weatherCode={weatherInfo.tokyoWeatherCode} temp={weatherInfo.tokyoTemp} humi={weatherInfo.tokyoHumi} className="max-w-96 mx-auto"/>
 					</div>
 
 
