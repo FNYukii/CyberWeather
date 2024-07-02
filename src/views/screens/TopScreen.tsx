@@ -3,6 +3,7 @@ import WeatherCard from "../components/WeatherCard"
 import Shuffle from "../components/Shuffle"
 import WeatherInfo from "../../entities/WeatherInfo"
 import WeatherService from "../../utils/WeatherService"
+import ReactLoading from "react-loading"
 
 
 
@@ -46,7 +47,17 @@ function TopScreen() {
 
 
 			{!isLoaded &&
-				<p className="text-3xl">Loading...</p>
+				<div>
+					<ReactLoading
+						type="spin"
+						color="#A6DDFC"
+						height="28px"
+						width="28px"
+						className="mx-auto"
+					/>
+
+					<p className="mt-8 text-3xl">Loading</p>
+				</div>
 			}
 
 			{isLoaded && weatherInfo === null &&
@@ -69,9 +80,9 @@ function TopScreen() {
 
 					<div className="mt-16   grid grid-cols-1 lg:grid-cols-3">
 
-						<WeatherCard area="osaka" weatherCode={weatherInfo.osakaWeatherCode} temp={weatherInfo.osakaTemp} humi={weatherInfo.osakaHumi} className="max-w-96 mx-auto"/>
-						<WeatherCard area="nagoya" weatherCode={weatherInfo.nagoyaWeatherCode} temp={weatherInfo.nagoyaTemp} humi={weatherInfo.nagoyaHumi} className="max-w-96 mx-auto"/>
-						<WeatherCard area="tokyo" weatherCode={weatherInfo.tokyoWeatherCode} temp={weatherInfo.tokyoTemp} humi={weatherInfo.tokyoHumi} className="max-w-96 mx-auto"/>
+						<WeatherCard area="osaka" weatherCode={weatherInfo.osakaWeatherCode} temp={weatherInfo.osakaTemp} humi={weatherInfo.osakaHumi} className="max-w-96 mx-auto" />
+						<WeatherCard area="nagoya" weatherCode={weatherInfo.nagoyaWeatherCode} temp={weatherInfo.nagoyaTemp} humi={weatherInfo.nagoyaHumi} className="max-w-96 mx-auto" />
+						<WeatherCard area="tokyo" weatherCode={weatherInfo.tokyoWeatherCode} temp={weatherInfo.tokyoTemp} humi={weatherInfo.tokyoHumi} className="max-w-96 mx-auto" />
 					</div>
 
 
