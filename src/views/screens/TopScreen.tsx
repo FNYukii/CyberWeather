@@ -3,7 +3,6 @@ import WeatherCard from "../components/WeatherCard"
 import Shuffle from "../components/Shuffle"
 import WeatherInfo from "../../entities/WeatherInfo"
 import WeatherService from "../../utils/WeatherService"
-import ReactLoading from "react-loading"
 
 
 
@@ -47,17 +46,11 @@ function TopScreen() {
 
 
 			{!isLoaded &&
-				<ReactLoading
-					type="spin"
-					color="#A6DDFC"
-					height="28px"
-					width="28px"
-					className="mx-auto"
-				/>
+				<Shuffle className="text-3xl">LOADING</Shuffle>
 			}
 
 			{isLoaded && weatherInfo === null &&
-				<p className="text-3xl">Error!</p>
+				<Shuffle className="text-3xl">ERROR!</Shuffle>
 			}
 
 
