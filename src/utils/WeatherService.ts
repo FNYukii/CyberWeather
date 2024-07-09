@@ -104,7 +104,7 @@ class WeatherService {
 
 	static async readWeatherInfoFromCache(): Promise<WeatherInfo | null> {
 
-		await ShuffleService.sleep(800)
+		await ShuffleService.sleep(900)
 
 		// LocalStorageからweatherInfoのキャッシュを読み取る
 		const weatherInfoCacheString = localStorage.getItem("weatherInfoCache")

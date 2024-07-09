@@ -38,16 +38,16 @@ function WeatherCard(props: Props) {
 		<div className={props.className}>
 
 			<div className="bg-primary/20   w-72 py-1">
-				<Shuffle extraFrames={24} className="text-4xl text-center">{props.area}</Shuffle>
+				<Shuffle extraFrames={20} className="text-4xl text-center">{props.area}</Shuffle>
 			</div>
 
 
 
 			<div className="mt-6   flex justify-between items-center   text-3xl">
 
-				<Shuffle extraFrames={32}>{weatherLabel}</Shuffle>
+				<Shuffle extraFrames={28}>{weatherLabel}</Shuffle>
 
-				<ShuffleIcon endDelay={36}>
+				<ShuffleIcon endDelay={28}>
 
 					{weatherLabel === "sunny" &&
 						<BsSun />
@@ -88,12 +88,12 @@ function WeatherCard(props: Props) {
 				<div className="flex flex-col gap-4 items-end   text-2xl">
 
 					<div className="whitespace-nowrap">
-						<Shuffle extraFrames={40} className="inline">{`${props.temp}`}</Shuffle>
+						<Shuffle extraFrames={36} className="inline">{`${props.temp}`}</Shuffle>
 						<span> °C</span>
 					</div>
 
 					<div className="whitespace-nowrap">
-						<Shuffle extraFrames={44} className="inline">{`${props.humi}`}</Shuffle>
+						<Shuffle extraFrames={40} className="inline">{`${props.humi}`}</Shuffle>
 						<span> %</span>
 					</div>
 				</div>
