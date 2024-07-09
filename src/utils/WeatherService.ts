@@ -1,5 +1,6 @@
 import dayjs from "dayjs"
 import WeatherInfo from "../entities/WeatherInfo"
+import ShuffleService from "./ShuffleService"
 
 
 
@@ -35,6 +36,8 @@ class WeatherService {
 			// APIを呼び出す。今回は無料&登録不要の天気API「Open Meteo」を利用
 			const response = await fetch(url)
 
+			console.log("APIからレスポンス受領")
+
 			// 受け取ったJSON文字列をJavaScriptオブジェクトに変換
 			const data = await response.json()
 
@@ -60,7 +63,7 @@ class WeatherService {
 
 
 
-	static async readWeatherInfo(): Promise<WeatherInfo | null> {
+	static async readWeatherInfoFromAPI(): Promise<WeatherInfo | null> {
 
 		// 現在の日時を取得
 		const dayAndDayOfWeek = dayjs().format("YYYY-MM-DD    dddd")
@@ -93,7 +96,36 @@ class WeatherService {
 			tokyoHumi: tokyoWeather.humi,
 		}
 
+		// LocalStorageに保存
+		localStorage.setItem("weatherInfoCache", JSON.stringify(weatherInfo))
+
 		return weatherInfo
+	}
+
+
+
+	static async readWeatherInfoFromCache(): Promise<WeatherInfo | null> {
+
+		await ShuffleService.sleep(800)
+
+		// LocalStorageからweatherInfoのキャッシュを読み取る
+		const weatherInfoCacheString = localStorage.getItem("weatherInfoCache")
+		if (!weatherInfoCacheString) return null
+
+		// 読み取れたらWeatherInfo型に変換
+		const weatherInfoCache: WeatherInfo = JSON.parse(weatherInfoCacheString)
+		if (!weatherInfoCache) return null
+
+		// 今日の日付をdateText形式で取得
+		const todayDateText = dayjs().format("YYYY-MM-DD    dddd")
+		
+		// 今日の日付とweatherInfoキャッシュの日付を比較
+		if (todayDateText === weatherInfoCache.dateText) {
+
+			return weatherInfoCache
+		}
+
+		return null
 	}
 
 

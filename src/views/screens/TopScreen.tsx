@@ -21,8 +21,18 @@ function TopScreen() {
 		setIsLoaded(false)
 		setWeatherInfo(null)
 
-		// 読み取りを実行
-		const weatherInfo = await WeatherService.readWeatherInfo()
+
+		// キャッシュから読み取り
+		const weatherInfoFromCache = await WeatherService.readWeatherInfoFromCache()
+
+		if (weatherInfoFromCache) {
+			setIsLoaded(true)
+			setWeatherInfo(weatherInfoFromCache)
+			return
+		}
+
+		// APIから読み取りを実行
+		const weatherInfo = await WeatherService.readWeatherInfoFromAPI()
 
 		// 新しい値でStateを更新
 		setIsLoaded(true)
