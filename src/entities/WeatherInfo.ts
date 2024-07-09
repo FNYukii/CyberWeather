@@ -1,7 +1,5 @@
 type WeatherInfo = {
-	dateText: string
-	timeText: string
-
+	ymd: string
 	osakaWeatherCode: number
 	osakaTemp: number
 	osakaHumi: number

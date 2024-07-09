@@ -3,47 +3,58 @@ import WeatherCard from "../components/WeatherCard"
 import Shuffle from "../components/Shuffle"
 import WeatherInfo from "../../entities/WeatherInfo"
 import WeatherService from "../../utils/WeatherService"
+import dayjs from "dayjs"
 
 
 
 function TopScreen() {
 
+	const [dateText, setDateText] = useState("")
+	const [timeText, setTimeText] = useState("")
 
-	// 日時と天気の情報をまとめたもの
+
+	// 東名阪の天気の情報をまとめたもの
 	const [weatherInfo, setWeatherInfo] = useState<WeatherInfo | null>(null)
 	const [isLoaded, setIsLoaded] = useState(false)
 
 
 
-	async function read() {
+	async function load() {
 
 		// 一度Stateをリセット
 		setIsLoaded(false)
 		setWeatherInfo(null)
 
-
-		// キャッシュから読み取り
-		const weatherInfoFromCache = await WeatherService.readWeatherInfoFromCache()
-
-		if (weatherInfoFromCache) {
-			setIsLoaded(true)
-			setWeatherInfo(weatherInfoFromCache)
-			return
-		}
-
-		// APIから読み取りを実行
-		const weatherInfo = await WeatherService.readWeatherInfoFromAPI()
+		// 読み取り
+		const weatherInfo = await readWeatherInfo()
+		const dateText = dayjs().format("YYYY-MM-DD    dddd")
+		const timeText = dayjs().format("HH:mm")
 
 		// 新しい値でStateを更新
-		setIsLoaded(true)
 		setWeatherInfo(weatherInfo)
+		setDateText(dateText)
+		setTimeText(timeText)
+		setIsLoaded(true)
+	}
+
+
+
+	async function readWeatherInfo() {
+
+		// まずキャッシュから読み取り
+		const weatherInfoFromCache = await WeatherService.readWeatherInfoFromCache()
+		if (weatherInfoFromCache) return weatherInfoFromCache
+
+		// キャッシュに本日のデータがなければ、APIから読み取り
+		const weatherInfoFromAPI = await WeatherService.readWeatherInfoFromAPI()
+		return weatherInfoFromAPI
 	}
 
 
 
 	useEffect(() => {
 
-		read()
+		load()
 		// eslint-disable-next-line
 	}, [])
 
@@ -71,8 +82,8 @@ function TopScreen() {
 
 					<div className="text-center text-3xl sm:text-5xl">
 
-						<Shuffle className="whitespace-pre">{weatherInfo.dateText}</Shuffle>
-						<Shuffle className="mt-4" extraFrames={16}>{weatherInfo.timeText}</Shuffle>
+						<Shuffle className="whitespace-pre">{dateText}</Shuffle>
+						<Shuffle className="mt-4" extraFrames={16}>{timeText}</Shuffle>
 					</div>
 
 
@@ -86,7 +97,7 @@ function TopScreen() {
 
 
 
-					<button onClick={() => read()} className="mt-16 block mx-auto   bg-cyber-button w-60 py-2   focus:outline-neutral-500 hover:brightness-200 active:brightness-125 transition">
+					<button onClick={() => load()} className="mt-16 block mx-auto   bg-cyber-button w-60 py-2   focus:outline-neutral-500 hover:brightness-200 active:brightness-125 transition">
 						<Shuffle extraFrames={48} className="text-white text-3xl">RELOAD</Shuffle>
 					</button>
 

@@ -66,8 +66,7 @@ class WeatherService {
 	static async readWeatherInfoFromAPI(): Promise<WeatherInfo | null> {
 
 		// 現在の日時を取得
-		const dayAndDayOfWeek = dayjs().format("YYYY-MM-DD    dddd")
-		const time = dayjs().format("HH:mm")
+		const ymd = dayjs().format("YYYY-MM-DD")
 
 
 		// 各都市の天気を読み取る
@@ -83,8 +82,7 @@ class WeatherService {
 
 		// weatherInfoオブジェクトを生成
 		const weatherInfo: WeatherInfo = {
-			dateText: dayAndDayOfWeek,
-			timeText: time,
+			ymd: ymd,
 			osakaWeatherCode: osakaWeather.weatherCode,
 			osakaTemp: osakaWeather.temp,
 			osakaHumi: osakaWeather.humi,
@@ -117,10 +115,10 @@ class WeatherService {
 		if (!weatherInfoCache) return null
 
 		// 今日の日付をdateText形式で取得
-		const todayDateText = dayjs().format("YYYY-MM-DD    dddd")
+		const todayYmd = dayjs().format("YYYY-MM-DD")
 		
 		// 今日の日付とweatherInfoキャッシュの日付を比較
-		if (todayDateText === weatherInfoCache.dateText) {
+		if (todayYmd === weatherInfoCache.ymd) {
 
 			return weatherInfoCache
 		}
