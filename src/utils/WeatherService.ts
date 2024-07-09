@@ -36,7 +36,7 @@ class WeatherService {
 			// APIを呼び出す。今回は無料&登録不要の天気API「Open Meteo」を利用
 			const response = await fetch(url)
 
-			console.log("APIからレスポンス受領")
+			console.log("Read data from API.")
 
 			// 受け取ったJSON文字列をJavaScriptオブジェクトに変換
 			const data = await response.json()
