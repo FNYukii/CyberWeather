@@ -1,6 +1,5 @@
 import Shuffle from './Shuffle'
 import ShuffleIcon from './ShuffleIcon'
-import Indicator from './Indicator'
 import WeatherService from '../../utils/WeatherService'
 
 import { BsSun } from 'react-icons/bs'
@@ -9,6 +8,7 @@ import { BsCloudFog2 } from 'react-icons/bs'
 import { BsCloudRain } from 'react-icons/bs'
 import { BsLightning } from 'react-icons/bs'
 import { BsSnow } from 'react-icons/bs'
+import AnimateProgress from './AnimateProgress'
 
 interface Props {
   area: string
@@ -52,15 +52,15 @@ function WeatherCard(props: Props) {
 
       <div className="mt-6   flex justify-between gap-4">
         <div className="flex flex-col justify-around gap-4   w-full">
-          <Indicator
-            max={50}
+          <AnimateProgress
             value={props.temp}
-            className="meter-cyber   w-full h-2"
+            max={50}
+            className="progress-bg-cyber progress-value-cyber   w-full h-2"
           />
-          <Indicator
-            max={100}
+          <AnimateProgress
             value={props.humi}
-            className="meter-cyber   w-full h-2"
+            max={100}
+            className="progress-bg-cyber progress-value-cyber   w-full h-2"
           />
         </div>
 

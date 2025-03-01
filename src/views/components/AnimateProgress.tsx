@@ -3,17 +3,16 @@ import ShuffleService from '../../utils/ShuffleService'
 
 interface Props {
   value: number
-  min?: number
-  max?: number
+  max: number
 
   className?: string
 }
 
-function Indicator(props: Props) {
+function AnimateProgress(props: Props) {
   // useEffectが発火したかどうか
   const isEffectedRef = useRef(false)
 
-  // 現在のmeterの長さ
+  // 現在のバーの長さ
   const [value, setValue] = useState(0)
 
   useEffect(() => {
@@ -35,14 +34,7 @@ function Indicator(props: Props) {
     // eslint-disable-next-line
   }, [props.value])
 
-  return (
-    <meter
-      min={props.min}
-      max={props.max}
-      value={value}
-      className={props.className}
-    />
-  )
+  return <progress max={props.max} value={value} className={props.className} />
 }
 
-export default Indicator
+export default AnimateProgress
