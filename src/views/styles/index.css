@@ -1,62 +1,56 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 @import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap');
 
-
-
 body {
-	font-family: Exo;
+  font-family: Exo;
 }
 
-
-
 .bg-cyber-button {
-	position: relative;
+  position: relative;
 
-	border: solid 1px #777;
-	background-color: #1A2028;
-	filter: brightness(1.25);
+  border: solid 1px #777;
+  background-color: #1a2028;
+  filter: brightness(1.25);
 }
 
 .bg-cyber-button::before {
-	content: "";
-	position: absolute;
-	background-color: #1A2028DD;
+  content: '';
+  position: absolute;
+  background-color: #1a2028dd;
 
-	top: -1px;
-	bottom: -1px;
-	left: 10px;
-	right: 10px;
+  top: -1px;
+  bottom: -1px;
+  left: 10px;
+  right: 10px;
 }
 
 .bg-cyber-button::after {
-	content: "";
-	position: absolute;
-	background-color: #1A2028DD;
+  content: '';
+  position: absolute;
+  background-color: #1a2028dd;
 
-	top: 10px;
-	bottom: 10px;
-	left: -1px;
-	right: -1px;
+  top: 10px;
+  bottom: 10px;
+  left: -1px;
+  right: -1px;
 }
 
 .bg-cyber-button * {
-	position: relative;
-	z-index: 1;
+  position: relative;
+  z-index: 1;
 }
 
-
-
 .meter-cyber {
-	&::-webkit-meter-bar {
-		@apply bg-primary/20 border-none
-	}
+  &::-webkit-meter-bar {
+    @apply bg-primary/20 border-none;
+  }
 
-	&::-webkit-meter-optimum-value,
-	&::-webkit-meter-suboptimum-value,
-	&::-webkit-meter-even-less-good-value {
-		@apply bg-primary
-	}
+  &::-webkit-meter-optimum-value,
+  &::-webkit-meter-suboptimum-value,
+  &::-webkit-meter-even-less-good-value {
+    @apply bg-primary;
+  }
 }

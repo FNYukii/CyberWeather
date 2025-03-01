@@ -1,11 +1,7 @@
-import TopScreen from "./views/screens/TopScreen"
+import TopScreen from './views/screens/TopScreen'
 
 function App() {
-
-	return (
-
-		<TopScreen />
-	)
+  return <TopScreen />
 }
 
 export default App
