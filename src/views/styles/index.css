@@ -8,48 +8,45 @@ body {
   font-family: Exo;
 }
 
-.bg-cyber-button {
+.cyber-button {
   position: relative;
 
   border: solid 1px #777;
   background-color: #1a2028;
   filter: brightness(1.25);
-}
 
-.bg-cyber-button::before {
-  content: '';
-  position: absolute;
-  background-color: #1a2028dd;
+  &::before {
+    content: '';
+    position: absolute;
+    background-color: #1a2028dd;
 
-  top: -1px;
-  bottom: -1px;
-  left: 10px;
-  right: 10px;
-}
+    top: -1px;
+    bottom: -1px;
+    left: 10px;
+    right: 10px;
+  }
 
-.bg-cyber-button::after {
-  content: '';
-  position: absolute;
-  background-color: #1a2028dd;
+  &::after {
+    content: '';
+    position: absolute;
+    background-color: #1a2028dd;
 
-  top: 10px;
-  bottom: 10px;
-  left: -1px;
-  right: -1px;
-}
+    top: 10px;
+    bottom: 10px;
+    left: -1px;
+    right: -1px;
+  }
 
-.bg-cyber-button * {
-  position: relative;
-  z-index: 1;
-}
-
-.progress-bg-cyber {
-  &::-webkit-progress-bar {
-    @apply bg-primary/20 border-none;
+  * {
+    position: relative;
+    z-index: 1;
   }
 }
 
-.progress-value-cyber {
+.cyber-progress {
+  &::-webkit-progress-bar {
+    @apply bg-primary/20 border-none;
+  }
   &::-webkit-progress-value {
     @apply bg-primary;
   }

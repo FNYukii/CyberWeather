@@ -55,12 +55,12 @@ function WeatherCard(props: Props) {
           <AnimateProgress
             value={props.temp}
             max={50}
-            className="progress-bg-cyber progress-value-cyber   w-full h-2"
+            className="cyber-progress  w-full h-2"
           />
           <AnimateProgress
             value={props.humi}
             max={100}
-            className="progress-bg-cyber progress-value-cyber   w-full h-2"
+            className="cyber-progress  w-full h-2"
           />
         </div>
 

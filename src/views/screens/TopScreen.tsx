@@ -88,7 +88,7 @@ function TopScreen() {
 
           <button
             onClick={() => load()}
-            className="mt-16 block mx-auto   bg-cyber-button w-60 py-2   focus:outline-neutral-500 hover:brightness-200 active:brightness-125 transition"
+            className="mt-16 block mx-auto   cyber-button w-60 py-2   focus:outline-neutral-500 hover:brightness-200 active:brightness-125 transition"
           >
             <Shuffle extraFrames={40} className="text-white text-3xl">
               RELOAD
